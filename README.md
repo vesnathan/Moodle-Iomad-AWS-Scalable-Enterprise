@@ -204,6 +204,8 @@ Create Auto-Scaling-Group
 - Next
 - Next
 
+Delete moodle-server-2
+
 
 
 
