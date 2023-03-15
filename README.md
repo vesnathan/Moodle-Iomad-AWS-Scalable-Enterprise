@@ -53,7 +53,7 @@ $ sudo rm -R iomad-IOMAD_401_STABLE
 
 Reopen Putty  
 - install dependencies  
-sudo yum install git  php-gd php-pear php-mbstring php-soap php-intl php-zts php-xml php-devel php-sodium php-opcache amazon-efs-utils
+$ sudo yum install git  php-gd php-pear php-mbstring php-soap php-intl php-zts php-xml php-devel php-sodium php-opcache amazon-efs-utils
  
   
 Create EFS storage  
@@ -181,7 +181,32 @@ Create Load Balancer
 - Default Action: moodle-target-group  
 - Create  
   
-Change DNS to point to load balancer  
+Change DNS to point to load balancer 
+  
+Create Launch Template  
+- Name: moodle-launch-template  
+- My AMI's->Owned By Me->Moodle EC2 Image  
+- Instance t2.small  
+- Create Launch Template  
+  
+Create Auto-Scaling-Group  
+- Name: Moodle Auto-Scaling Group  
+- Launch template: moodle-launch-template  
+- Next  
+- Availability Zones: all
+- Next
+- Attach to an existing load balancer
+- Choose from your load balancer target groups
+- moodle-target-group
+- Next
+- Maximum Capacity: 2
+- Next
+- Next
+- Next
+
+
+
+
 
 
 
